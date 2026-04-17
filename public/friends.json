@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "David Kim",
+    "picture": "https://i.pravatar.cc/300?img=12",
+    "email": "david.kim@example.com",
+    "days_since_contact": 62,
+    "status": "almost due",
+    "tags": ["work"],
+    "bio": "Former teammate from a product project. We usually catch up over coffee and career updates.",
+    "goal": 30,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 2,
+    "name": "Emma Wilson",
+    "picture": "https://i.pravatar.cc/300?img=32",
+    "email": "emma.wilson@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["family"],
+    "bio": "Cousin who always checks in during holidays. I want to stay more consistent with her.",
+    "goal": 30,
+    "next_due_date": "2026-04-18"
+  },
+  {
+    "id": 3,
+    "name": "Lisa Nakamura",
+    "picture": "https://i.pravatar.cc/300?img=47",
+    "email": "lisa.nakamura@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["work"],
+    "bio": "Former colleague and thoughtful collaborator. Great person to reconnect with every month.",
+    "goal": 30,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 4,
+    "name": "James Wright",
+    "picture": "https://i.pravatar.cc/300?img=15",
+    "email": "james.wright@example.com",
+    "days_since_contact": 62,
+    "status": "overdue",
+    "tags": ["hobby", "travel"],
+    "bio": "Met through a travel group. We usually talk about weekend trips and photography.",
+    "goal": 30,
+    "next_due_date": "2026-04-14"
+  },
+  {
+    "id": 5,
+    "name": "Sarah Chen",
+    "picture": "https://i.pravatar.cc/300?img=20",
+    "email": "sarah.chen@example.com",
+    "days_since_contact": 18,
+    "status": "on-track",
+    "tags": ["college"],
+    "bio": "University friend who now lives in another city. We stay close through short check-ins.",
+    "goal": 30,
+    "next_due_date": "2026-05-02"
+  },
+  {
+    "id": 6,
+    "name": "Marcus Johnson",
+    "picture": "https://i.pravatar.cc/300?img=56",
+    "email": "marcus.johnson@example.com",
+    "days_since_contact": 24,
+    "status": "on-track",
+    "tags": ["fitness"],
+    "bio": "Gym friend who keeps me motivated. We usually send each other progress updates.",
+    "goal": 30,
+    "next_due_date": "2026-05-08"
+  },
+  {
+    "id": 7,
+    "name": "Olivia Martinez",
+    "picture": "https://i.pravatar.cc/300?img=5",
+    "email": "olivia.martinez@example.com",
+    "days_since_contact": 27,
+    "status": "on-track",
+    "tags": ["work"],
+    "bio": "Creative teammate with great energy. I want to keep our friendship strong outside work too.",
+    "goal": 30,
+    "next_due_date": "2026-05-10"
+  },
+  {
+    "id": 8,
+    "name": "Ryan O'Brien",
+    "picture": "https://i.pravatar.cc/300?img=61",
+    "email": "ryan.obrien@example.com",
+    "days_since_contact": 52,
+    "status": "almost due",
+    "tags": ["sports"],
+    "bio": "Friend from a local football club. We usually meet during match days or text about games.",
+    "goal": 30,
+    "next_due_date": "2026-04-22"
+  },
+  {
+    "id": 9,
+    "name": "Aisha Patel",
+    "picture": "https://i.pravatar.cc/300?img=25",
+    "email": "aisha.patel@example.com",
+    "days_since_contact": 14,
+    "status": "on-track",
+    "tags": ["design"],
+    "bio": "Designer friend with amazing ideas. We often exchange feedback on creative work.",
+    "goal": 30,
+    "next_due_date": "2026-05-05"
+  },
+  {
+    "id": 10,
+    "name": "Tom Baker",
+    "picture": "https://i.pravatar.cc/300?img=68",
+    "email": "tom.baker@example.com",
+    "days_since_contact": 44,
+    "status": "almost due",
+    "tags": ["mentor"],
+    "bio": "A helpful mentor who gives practical career advice. I try to connect with him regularly.",
+    "goal": 30,
+    "next_due_date": "2026-04-24"
+  }
+]

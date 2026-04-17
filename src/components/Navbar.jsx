@@ -1,41 +1,41 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
 import {
   HiOutlineHome,
   HiOutlineClock,
   HiOutlineChartBar,
   HiOutlineMenu,
   HiOutlineX,
-} from 'react-icons/hi'
+} from "react-icons/hi";
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     {
-      name: 'Home',
-      path: '/',
+      name: "Home",
+      path: "/",
       icon: <HiOutlineHome size={20} />,
     },
     {
-      name: 'Timeline',
-      path: '/timeline',
+      name: "Timeline",
+      path: "/timeline",
       icon: <HiOutlineClock size={20} />,
     },
     {
-      name: 'Stats',
-      path: '/stats',
+      name: "Stats",
+      path: "/stats",
       icon: <HiOutlineChartBar size={20} />,
     },
-  ]
+  ];
 
   return (
     <header className="border-b border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold md:text-3xl">
-          <span className="text-[#1F2937]">Keen</span>
-          <span className="text-[#244D3F]">Keeper</span>
-        </h1>
+        <NavLink to="/">
+          <img src={logo} alt="KeenKeeper" className="h-8 md:h-10" />
+        </NavLink>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-2">
@@ -43,12 +43,12 @@ function Navbar() {
             <NavLink
               key={link.path}
               to={link.path}
-              end={link.path === '/'}
+              end={link.path === "/"}
               className={({ isActive }) =>
                 `flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium ${
                   isActive
-                    ? 'bg-[#244D3F] text-white'
-                    : 'text-[#64748B] hover:bg-gray-100'
+                    ? "bg-[#244D3F] text-white"
+                    : "text-[#64748B] hover:bg-gray-100"
                 }`
               }
             >
@@ -78,7 +78,7 @@ function Navbar() {
       {/* Offcanvas */}
       <div
         className={`fixed top-0 right-0 z-50 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ${
-          menuOpen ? 'translate-x-0' : 'translate-x-full'
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b p-4">
@@ -93,13 +93,13 @@ function Navbar() {
             <NavLink
               key={link.path}
               to={link.path}
-              end={link.path === '/'}
+              end={link.path === "/"}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-2 rounded-lg px-4 py-3 text-sm font-medium ${
                   isActive
-                    ? 'bg-[#244D3F] text-white'
-                    : 'text-[#64748B] hover:bg-gray-100'
+                    ? "bg-[#244D3F] text-white"
+                    : "text-[#64748B] hover:bg-gray-100"
                 }`
               }
             >
@@ -110,7 +110,7 @@ function Navbar() {
         </nav>
       </div>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

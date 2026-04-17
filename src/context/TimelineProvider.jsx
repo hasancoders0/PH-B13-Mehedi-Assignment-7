@@ -1,6 +1,5 @@
-import { createContext, useState } from 'react'
-
-export const TimelineContext = createContext()
+import { useState } from 'react'
+import TimelineContext from './timelineContext'
 
 function TimelineProvider({ children }) {
   const [timeline, setTimeline] = useState([])

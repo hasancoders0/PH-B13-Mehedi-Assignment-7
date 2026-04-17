@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from 'recharts'
-import { TimelineContext } from '../context/TimelineContext'
+import TimelineContext from '../context/timelineContext'
 
 function Stats() {
   const { timeline } = useContext(TimelineContext)

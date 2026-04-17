@@ -8,7 +8,7 @@ import '@fontsource/inter/700.css'
 import 'react-toastify/dist/ReactToastify.css'
 import './index.css'
 import router from './routes/Routes'
-import TimelineProvider from './context/TimelineContext'
+import TimelineProvider from './context/TimelineProvider'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

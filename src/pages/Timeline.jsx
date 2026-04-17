@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
+import TimelineContext from '../context/timelineContext'
 import TimelineItem from '../components/TimelineItem'
-import { TimelineContext } from '../context/TimelineContext'
 
 function Timeline() {
   const { timeline } = useContext(TimelineContext)
@@ -9,24 +9,20 @@ function Timeline() {
   const [sort, setSort] = useState('newest')
   const [search, setSearch] = useState('')
 
-  // 🔹 Filter
   let filteredData =
     filter === 'all'
       ? timeline
       : timeline.filter((item) => item.type === filter)
 
-  // 🔹 Search
   filteredData = filteredData.filter((item) =>
     item.title.toLowerCase().includes(search.toLowerCase())
   )
 
-  // 🔹 Sort
-  filteredData = filteredData.sort((a, b) => {
+  filteredData = [...filteredData].sort((a, b) => {
     if (sort === 'newest') {
       return new Date(b.date) - new Date(a.date)
-    } else {
-      return new Date(a.date) - new Date(b.date)
     }
+    return new Date(a.date) - new Date(b.date)
   })
 
   return (
@@ -36,9 +32,7 @@ function Timeline() {
           Timeline
         </h1>
 
-        {/* Controls */}
         <div className="mt-6 grid gap-3 md:grid-cols-3">
-          {/* Filter */}
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
@@ -50,7 +44,6 @@ function Timeline() {
             <option value="video">Video</option>
           </select>
 
-          {/* Sort */}
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
@@ -60,7 +53,6 @@ function Timeline() {
             <option value="oldest">Oldest</option>
           </select>
 
-          {/* Search */}
           <input
             type="text"
             placeholder="Search..."
@@ -70,7 +62,6 @@ function Timeline() {
           />
         </div>
 
-        {/* Timeline List */}
         <div className="mt-6 space-y-4">
           {filteredData.length > 0 ? (
             filteredData.map((item) => (

@@ -43,7 +43,7 @@ function HomeBanner({
     <section className="py-8 md:py-12">
       <div className="mx-auto max-w-5xl text-center">
         <h1 className="text-3xl font-semibold tracking-tight text-[#1F2937] md:text-5xl">
-          Friends to keep close in your life|||||||||||
+          Friends to keep close in your life
         </h1>
 
         <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[#6B7280] md:text-base">

@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { useLoaderData } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 import {
   HiOutlineClock,
   HiOutlineArchive,
@@ -7,9 +9,11 @@ import {
   HiOutlineChatAlt2,
   HiOutlineVideoCamera,
 } from 'react-icons/hi'
+import { TimelineContext } from '../context/TimelineContext'
 
 function FriendDetails() {
   const friend = useLoaderData()
+  const { addTimelineEntry } = useContext(TimelineContext)
 
   const statusStyles = {
     overdue: 'bg-[#EF4444] text-white',
@@ -32,11 +36,15 @@ function FriendDetails() {
     })
   }
 
+  const handleCheckIn = (type) => {
+    addTimelineEntry(type, friend.name)
+    toast.success(`${type.charAt(0).toUpperCase() + type.slice(1)} added to timeline`)
+  }
+
   return (
     <section className="py-6 md:py-10">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-[280px_1fr] md:items-start md:gap-5">
-          {/* Left column */}
           <div className="space-y-3">
             <div className="rounded-2xl border border-[#E5E7EB] bg-white px-5 py-6 text-center shadow-sm">
               <img
@@ -77,7 +85,6 @@ function FriendDetails() {
               </p>
             </div>
 
-            {/* Mobile action buttons in a row */}
             <div className="grid grid-cols-3 gap-2 md:grid-cols-1 md:gap-3">
               <button className="flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl border border-[#E5E7EB] bg-white px-2 py-2 text-[12px] font-medium text-[#1F2937] shadow-sm transition hover:bg-gray-50 md:min-h-[48px] md:flex-row md:px-4 md:py-3 md:text-sm">
                 <HiOutlineClock size={16} />
@@ -96,9 +103,7 @@ function FriendDetails() {
             </div>
           </div>
 
-          {/* Right column */}
           <div className="space-y-4">
-            {/* Stats in one row on mobile */}
             <div className="grid grid-cols-3 gap-2 md:gap-3">
               <div className="rounded-2xl border border-[#E5E7EB] bg-white px-2 py-4 text-center shadow-sm md:px-4 md:py-5">
                 <h2 className="text-[20px] font-semibold text-[#244D3F] md:text-[24px]">
@@ -150,17 +155,26 @@ function FriendDetails() {
               </h2>
 
               <div className="mt-4 grid grid-cols-3 gap-2 md:gap-3">
-                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                <button
+                  onClick={() => handleCheckIn('call')}
+                  className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
+                >
                   <HiOutlinePhone size={18} />
                   <span className="text-[12px] font-medium md:text-[13px]">Call</span>
                 </button>
 
-                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                <button
+                  onClick={() => handleCheckIn('text')}
+                  className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
+                >
                   <HiOutlineChatAlt2 size={18} />
                   <span className="text-[12px] font-medium md:text-[13px]">Text</span>
                 </button>
 
-                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                <button
+                  onClick={() => handleCheckIn('video')}
+                  className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
+                >
                   <HiOutlineVideoCamera size={18} />
                   <span className="text-[12px] font-medium md:text-[13px]">Video</span>
                 </button>
@@ -169,6 +183,8 @@ function FriendDetails() {
           </div>
         </div>
       </div>
+
+      <ToastContainer position="top-center" autoClose={2000} />
     </section>
   )
 }

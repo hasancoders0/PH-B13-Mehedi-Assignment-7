@@ -23,132 +23,148 @@ function FriendDetails() {
     return 'Overdue'
   }
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    })
+  }
+
   return (
-    <section className="py-6">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        {/* Left side */}
-        <div className="lg:col-span-4">
-          <div className="rounded-3xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
-            <img
-              src={friend.picture}
-              alt={friend.name}
-              className="h-24 w-24 rounded-full object-cover"
-            />
+    <section className="py-6 md:py-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-[280px_1fr] md:items-start md:gap-5">
+          {/* Left column */}
+          <div className="space-y-3">
+            <div className="rounded-2xl border border-[#E5E7EB] bg-white px-5 py-6 text-center shadow-sm">
+              <img
+                src={friend.picture}
+                alt={friend.name}
+                className="mx-auto h-20 w-20 rounded-full object-cover"
+              />
 
-            <h1 className="mt-4 text-2xl font-semibold text-[#1F2937]">
-              {friend.name}
-            </h1>
+              <h1 className="mt-4 text-[20px] font-semibold text-[#1F2937]">
+                {friend.name}
+              </h1>
 
-            <div className="mt-3">
-              <span
-                className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${statusStyles[friend.status]}`}
-              >
-                {formatStatus(friend.status)}
-              </span>
-            </div>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {friend.tags.map((tag, index) => (
+              <div className="mt-3">
                 <span
-                  key={index}
-                  className="rounded-full bg-[#DDF4E7] px-3 py-1 text-xs font-medium text-[#4B5563]"
+                  className={`inline-flex rounded-full px-3 py-1 text-[10px] font-medium ${statusStyles[friend.status]}`}
                 >
-                  {tag}
+                  {formatStatus(friend.status)}
                 </span>
-              ))}
+              </div>
+
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+                {friend.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="rounded-full bg-[#DDF4E7] px-2.5 py-1 text-[10px] font-medium uppercase text-[#4B5563]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <p className="mt-4 text-[14px] italic leading-7 text-[#6B7280]">
+                "{friend.bio}"
+              </p>
+
+              <p className="mt-2 text-[13px] text-[#6B7280]">
+                Preferred: email
+              </p>
             </div>
 
-            <p className="mt-5 text-sm leading-7 text-[#6B7280]">
-              {friend.bio}
-            </p>
-
-            <p className="mt-4 text-sm text-[#374151]">
-              <span className="font-medium">Preferred:</span> {friend.email}
-            </p>
-
-            <div className="mt-6 space-y-3">
-              <button className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm font-medium text-[#1F2937] transition hover:bg-gray-50">
-                <HiOutlineClock size={18} />
-                Snooze 2 Weeks
+            {/* Mobile action buttons in a row */}
+            <div className="grid grid-cols-3 gap-2 md:grid-cols-1 md:gap-3">
+              <button className="flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl border border-[#E5E7EB] bg-white px-2 py-2 text-[12px] font-medium text-[#1F2937] shadow-sm transition hover:bg-gray-50 md:min-h-[48px] md:flex-row md:px-4 md:py-3 md:text-sm">
+                <HiOutlineClock size={16} />
+                <span className="text-center">Snooze</span>
               </button>
 
-              <button className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] px-4 py-3 text-sm font-medium text-[#1F2937] transition hover:bg-gray-50">
-                <HiOutlineArchive size={18} />
-                Archive
+              <button className="flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl border border-[#E5E7EB] bg-white px-2 py-2 text-[12px] font-medium text-[#1F2937] shadow-sm transition hover:bg-gray-50 md:min-h-[48px] md:flex-row md:px-4 md:py-3 md:text-sm">
+                <HiOutlineArchive size={16} />
+                <span className="text-center">Archive</span>
               </button>
 
-              <button className="flex w-full items-center justify-center gap-2 rounded-xl border border-[#FECACA] px-4 py-3 text-sm font-medium text-[#DC2626] transition hover:bg-red-50">
-                <HiOutlineTrash size={18} />
-                Delete
+              <button className="flex min-h-[52px] flex-col items-center justify-center gap-1 rounded-xl border border-[#E5E7EB] bg-white px-2 py-2 text-[12px] font-medium text-[#EF4444] shadow-sm transition hover:bg-red-50 md:min-h-[48px] md:flex-row md:px-4 md:py-3 md:text-sm">
+                <HiOutlineTrash size={16} />
+                <span className="text-center">Delete</span>
               </button>
             </div>
           </div>
-        </div>
 
-        {/* Right side */}
-        <div className="lg:col-span-8 space-y-6">
-          {/* Stats cards */}
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-sm">
-              <p className="text-3xl font-semibold text-[#1F2937]">
-                {friend.days_since_contact}
-              </p>
-              <p className="mt-2 text-sm text-[#6B7280]">Days Since Contact</p>
+          {/* Right column */}
+          <div className="space-y-4">
+            {/* Stats in one row on mobile */}
+            <div className="grid grid-cols-3 gap-2 md:gap-3">
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white px-2 py-4 text-center shadow-sm md:px-4 md:py-5">
+                <h2 className="text-[20px] font-semibold text-[#244D3F] md:text-[24px]">
+                  {friend.days_since_contact}
+                </h2>
+                <p className="mt-1 text-[11px] leading-4 text-[#6B7280] md:text-[12px]">
+                  Days Since Contact
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white px-2 py-4 text-center shadow-sm md:px-4 md:py-5">
+                <h2 className="text-[20px] font-semibold text-[#244D3F] md:text-[24px]">
+                  {friend.goal}
+                </h2>
+                <p className="mt-1 text-[11px] leading-4 text-[#6B7280] md:text-[12px]">
+                  Goal (Days)
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#E5E7EB] bg-white px-2 py-4 text-center shadow-sm md:px-4 md:py-5">
+                <h2 className="text-[15px] font-semibold text-[#244D3F] md:text-[24px]">
+                  {formatDate(friend.next_due_date)}
+                </h2>
+                <p className="mt-1 text-[11px] leading-4 text-[#6B7280] md:text-[12px]">
+                  Next Due
+                </p>
+              </div>
             </div>
 
-            <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-sm">
-              <p className="text-3xl font-semibold text-[#1F2937]">
-                {friend.goal}
+            <div className="rounded-2xl border border-[#E5E7EB] bg-white px-4 py-5 shadow-sm md:px-5">
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-[15px] font-medium text-[#1F2937]">
+                  Relationship Goal
+                </h2>
+
+                <button className="rounded-md border border-[#E5E7EB] bg-[#F8FAFC] px-3 py-1.5 text-[12px] text-[#374151]">
+                  Edit
+                </button>
+              </div>
+
+              <p className="mt-4 text-[14px] text-[#374151]">
+                Connect every <span className="font-semibold">{friend.goal} days</span>
               </p>
-              <p className="mt-2 text-sm text-[#6B7280]">Goal (Days)</p>
             </div>
 
-            <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-sm">
-              <p className="text-lg font-semibold text-[#1F2937]">
-                {friend.next_due_date}
-              </p>
-              <p className="mt-2 text-sm text-[#6B7280]">Next Due</p>
-            </div>
-          </div>
-
-          {/* Relationship goal */}
-          <div className="rounded-3xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-[#1F2937]">
-                Relationship Goal
+            <div className="rounded-2xl border border-[#E5E7EB] bg-white px-4 py-5 shadow-sm md:px-5">
+              <h2 className="text-[15px] font-medium text-[#1F2937]">
+                Quick Check-In
               </h2>
 
-              <button className="rounded-lg border border-[#E5E7EB] px-4 py-2 text-sm font-medium text-[#1F2937] hover:bg-gray-50">
-                Edit
-              </button>
-            </div>
+              <div className="mt-4 grid grid-cols-3 gap-2 md:gap-3">
+                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                  <HiOutlinePhone size={18} />
+                  <span className="text-[12px] font-medium md:text-[13px]">Call</span>
+                </button>
 
-            <p className="mt-4 text-sm text-[#374151]">
-              Connect every {friend.goal} days
-            </p>
-          </div>
+                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                  <HiOutlineChatAlt2 size={18} />
+                  <span className="text-[12px] font-medium md:text-[13px]">Text</span>
+                </button>
 
-          {/* Quick check-in */}
-          <div className="rounded-3xl border border-[#E5E7EB] bg-white p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-[#1F2937]">
-              Quick Check-In
-            </h2>
-
-            <div className="mt-5 flex flex-wrap gap-3">
-              <button className="inline-flex items-center gap-2 rounded-xl bg-[#244D3F] px-4 py-3 text-sm font-medium text-white">
-                <HiOutlinePhone size={18} />
-                Call
-              </button>
-
-              <button className="inline-flex items-center gap-2 rounded-xl bg-[#244D3F] px-4 py-3 text-sm font-medium text-white">
-                <HiOutlineChatAlt2 size={18} />
-                Text
-              </button>
-
-              <button className="inline-flex items-center gap-2 rounded-xl bg-[#244D3F] px-4 py-3 text-sm font-medium text-white">
-                <HiOutlineVideoCamera size={18} />
-                Video
-              </button>
+                <button className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]">
+                  <HiOutlineVideoCamera size={18} />
+                  <span className="text-[12px] font-medium md:text-[13px]">Video</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

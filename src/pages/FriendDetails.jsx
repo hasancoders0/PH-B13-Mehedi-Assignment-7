@@ -1,6 +1,6 @@
-import { useContext } from 'react'
-import { useLoaderData } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify'
+import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import {
   HiOutlineClock,
   HiOutlineArchive,
@@ -8,38 +8,41 @@ import {
   HiOutlinePhone,
   HiOutlineChatAlt2,
   HiOutlineVideoCamera,
-} from 'react-icons/hi'
-import { TimelineContext } from '../context/TimelineContext'
+} from "react-icons/hi";
+import { TimelineContext } from "../context/TimelineContext";
 
 function FriendDetails() {
-  const friend = useLoaderData()
-  const { addTimelineEntry } = useContext(TimelineContext)
+  const friend = useLoaderData();
+  const { addTimelineEntry } = useContext(TimelineContext);
 
   const statusStyles = {
-    overdue: 'bg-[#EF4444] text-white',
-    'almost due': 'bg-[#E7A93C] text-white',
-    'on-track': 'bg-[#244D3F] text-white',
-  }
+    overdue: "bg-[#EF4444] text-white",
+    "almost due": "bg-[#E7A93C] text-white",
+    "on-track": "bg-[#244D3F] text-white",
+  };
 
   const formatStatus = (status) => {
-    if (status === 'on-track') return 'On-Track'
-    if (status === 'almost due') return 'Almost Due'
-    return 'Overdue'
-  }
+    if (status === "on-track") return "On-Track";
+    if (status === "almost due") return "Almost Due";
+    return "Overdue";
+  };
 
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-    })
-  }
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
 
   const handleCheckIn = (type) => {
-    addTimelineEntry(type, friend.name)
-    toast.success(`${type.charAt(0).toUpperCase() + type.slice(1)} added to timeline`)
-  }
+    const action = type.charAt(0).toUpperCase() + type.slice(1);
+
+    addTimelineEntry(type, friend.name);
+
+    toast.success(`${action} with ${friend.name}`);
+  };
 
   return (
     <section className="py-6 md:py-10">
@@ -145,7 +148,8 @@ function FriendDetails() {
               </div>
 
               <p className="mt-4 text-[14px] text-[#374151]">
-                Connect every <span className="font-semibold">{friend.goal} days</span>
+                Connect every{" "}
+                <span className="font-semibold">{friend.goal} days</span>
               </p>
             </div>
 
@@ -156,27 +160,33 @@ function FriendDetails() {
 
               <div className="mt-4 grid grid-cols-3 gap-2 md:gap-3">
                 <button
-                  onClick={() => handleCheckIn('call')}
+                  onClick={() => handleCheckIn("call")}
                   className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
                 >
                   <HiOutlinePhone size={18} />
-                  <span className="text-[12px] font-medium md:text-[13px]">Call</span>
+                  <span className="text-[12px] font-medium md:text-[13px]">
+                    Call
+                  </span>
                 </button>
 
                 <button
-                  onClick={() => handleCheckIn('text')}
+                  onClick={() => handleCheckIn("text")}
                   className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
                 >
                   <HiOutlineChatAlt2 size={18} />
-                  <span className="text-[12px] font-medium md:text-[13px]">Text</span>
+                  <span className="text-[12px] font-medium md:text-[13px]">
+                    Text
+                  </span>
                 </button>
 
                 <button
-                  onClick={() => handleCheckIn('video')}
+                  onClick={() => handleCheckIn("video")}
                   className="flex min-h-[72px] flex-col items-center justify-center gap-2 rounded-xl border border-[#E5E7EB] bg-[#F8FAFC] text-[#1F2937] transition hover:bg-gray-100 md:min-h-[84px]"
                 >
                   <HiOutlineVideoCamera size={18} />
-                  <span className="text-[12px] font-medium md:text-[13px]">Video</span>
+                  <span className="text-[12px] font-medium md:text-[13px]">
+                    Video
+                  </span>
                 </button>
               </div>
             </div>
@@ -186,7 +196,7 @@ function FriendDetails() {
 
       <ToastContainer position="top-center" autoClose={2000} />
     </section>
-  )
+  );
 }
 
-export default FriendDetails
+export default FriendDetails;
